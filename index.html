@@ -102,7 +102,8 @@
               </div>
             </div>
             <p class="mt-5">
-              Creative IT professional with passion for creating web-based solutions,Trying to accure honed skills in Web technologies and  have additional proficinecy in Bootstrap, Jquery, Nodejs and Django to support the IT team in the execution of outstanding experience for the company’s technical audience.
+              Creative IT professional with passion for creating web-based solutions,Trying to accure honed skills in Web technologies and have additional proficinecy in Bootstrap, Jquery, Nodejs, Django and Flask to support the IT team in the execution of
+              outstanding experience for the company’s technical audience.
             </p>
           </div>
         </div>
@@ -117,7 +118,8 @@
         <div class="section-title">
           <h2>Facts</h2>
           <p class="font-weight-bold">"Any fool can write code that a computer can understand but Good programmers write code that humans can understand."</p>
-          <p class="text-right mt-3"> - somebody<p>
+          <p class="text-right mt-3"> - somebody
+          <p>
         </div>
 
         <div class="row mx-auto text-center">
@@ -234,7 +236,7 @@
             <div class="resume-item">
               <h4>Bachelor Degree in Mechanical Engineering</h4>
               <h5>2016 - 2020</h5>
-              <p><em>Mohandas College of Engineeering and Technology, Thiruvanathapuram, Kerala  </em></p>
+              <p><em>Mohandas College of Engineeering and Technology, Thiruvanathapuram, Kerala </em></p>
             </div>
           </div>
           <div class="col-lg-6">
@@ -255,8 +257,8 @@
               <ul>
                 <li>Headed the Finacial Department of Team Triviyanthra and bagged runners-up in Cost-Evaluation </li>
                 <li>Participated in QUAD BIKE DESIGN CHALLENGE Season 5 organised by Fraternity of Mechanical
-                And Automobile Engineers Conducted at FMEA MOTO PARK, Hyderabad and finished at 6th position
-                in National Level.</li>
+                  And Automobile Engineers Conducted at FMEA MOTO PARK, Hyderabad and finished at 6th position
+                  in National Level.</li>
               </ul>
             </div>
           </div>
@@ -322,7 +324,9 @@
                 <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
                 <div class="validate"></div>
               </div>
-              
+              <div class="mb-3">
+                <div class="loading" id="loading-sub" style="display:none">Loading</div>
+              </div>
               <div class="text-center"><button type="submit">Send Message</button></div>
             </form>
           </div>
@@ -364,24 +368,25 @@
   <script src="assets/js/main.js"></script>
 
   <script>
-        $("#gform").submit((e)=>{
-            e.preventDefault()
-            $.ajax({
-                url:"https://script.google.com/macros/s/AKfycbxlAtt3Tkc2tr20K8qpkz1IRGaSx4P-x_KjcQO6/exec",
-                data:$("#gform").serialize(),
-                method:"post",
-                success:function (response){
-                    alert("Form submitted successfully")
-                    window.location.reload()
+    $("#gform").submit((e) => {
+      e.preventDefault()
+      $('#loading-sub').show();
+      $.ajax({
+        url: "https://script.google.com/macros/s/AKfycbxlAtt3Tkc2tr20K8qpkz1IRGaSx4P-x_KjcQO6/exec",
+        data: $("#gform").serialize(),
+        method: "post",
+        success: function(response) {
+          $('#loading-sub').hide();
+          alert("Form submitted successfully")
+          window.location.reload()
+        },
+        error: function(err) {
+          alert("Something Error")
 
-                },
-                error:function (err){
-                    alert("Something Error")
-
-                }
-            })
-        })
-    </script>
+        }
+      })
+    })
+  </script>
 
 </body>
 
