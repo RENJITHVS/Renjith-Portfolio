@@ -22,6 +22,10 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
+
+  <!-- Ajax library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 </head>
 
 <body>
@@ -271,14 +275,14 @@
           <h2>Contact</h2>
         </div>
 
-          <div class="col-lg-12">
-            <div class="info">
-            <div class="d-lg-flex justify-content-between">
+        <div class="row mt-1">
 
-              <div class="address mt-4">
+          <div class="col-lg-4">
+            <div class="info">
+              <div class="address">
                 <i class="bi bi-geo-alt"></i>
                 <h4>Location:</h4>
-                <p>Thiruvanathapuram, Kerala, India</p>
+                <p>Thiruvananthapuram, Kerala</p>
               </div>
 
               <div class="email">
@@ -290,18 +294,46 @@
               <div class="phone">
                 <i class="bi bi-phone"></i>
                 <h4>Call:</h4>
-                <p>+91 9544232905</p>
+                <p>+91 955232905</p>
               </div>
 
-            </div>
             </div>
 
           </div>
 
-        
+          <div class="col-lg-8 mt-5 mt-lg-0">
 
+            <form role="form" class="email-form" id="gform">
+              <div class="form-row">
+                <div class="col-md-12 form-group">
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                  <div class="validate"></div>
+                </div>
+                <div class="col-md-12 form-group">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                  <div class="validate"></div>
+                </div>
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                <div class="validate"></div>
+              </div>
+              <div class="form-group">
+                <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+                <div class="validate"></div>
+              </div>
+              <div class="mb-3">
+                <div class="loading">Loading</div>
+                <div class="error-message"></div>
+                <div class="sent-message">Your message has been sent. Thank you!</div>
+              </div>
+              <div class="text-center"><button type="submit">Send Message</button></div>
+            </form>
+          </div>
+        </div>
       </div>
-    </section><!-- End Contact Section -->
+    </section>
+    <!-- End Contact Section -->
 
   </main><!-- End #main -->
 
@@ -334,6 +366,26 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+
+  <script>
+        $("#gform").submit((e)=>{
+            e.preventDefault()
+            $.ajax({
+                url:"https://script.google.com/macros/s/AKfycbxlAtt3Tkc2tr20K8qpkz1IRGaSx4P-x_KjcQO6/exec",
+                data:$("#gform").serialize(),
+                method:"post",
+                success:function (response){
+                    alert("Form submitted successfully")
+                    window.location.reload()
+
+                },
+                error:function (err){
+                    alert("Something Error")
+
+                }
+            })
+        })
+    </script>
 
 </body>
 
